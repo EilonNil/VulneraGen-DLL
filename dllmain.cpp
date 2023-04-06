@@ -7,8 +7,7 @@ extern "C" __declspec(dllexport) VOID printMessage(std::string message) {
     if (notepadHandle == NULL) {
         notepadHandle = FindWindowA(NULL, "*Untitled - Notepad");
     }
-
-    // Find the handle to the edit control inside the Notepad window
+    
     HWND editControlHandle = FindWindowEx(notepadHandle, NULL, L"Edit", NULL);
     for (int i = 0; i < message.size(); i++) {
         const char character = message[i];
