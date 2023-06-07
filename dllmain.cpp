@@ -5,7 +5,7 @@
 
 HWND notepadHandle = NULL;
 
-BOOL CALLBACK EnumWindowsProcMy(HWND hwnd, LPARAM lParam)
+BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 {
     //this function is the base function that will find the HWND of the
     //injected notepad using it's process ID.
@@ -22,7 +22,7 @@ BOOL CALLBACK EnumWindowsProcMy(HWND hwnd, LPARAM lParam)
 
 
 extern "C" __declspec(dllexport) VOID printMessage(std::string message, DWORD procID) {
-    EnumWindows(EnumWindowsProcMy, procID);
+    EnumWindows(EnumWindowsProc, procID);
     //go over all the windows and find the HWND of the notepad.
 
     HWND editControlHandle = FindWindowEx(notepadHandle, NULL, L"Edit", NULL);
